@@ -1,0 +1,38 @@
+## React & Tailwind Best Practices
+
+- **Component Style**
+  - Prefer functional components with hooks over class components.
+  - Keep components small and focused; extract reusable pieces into separate components.
+  - Avoid deeply nested prop-drilling; use context or custom hooks when data is shared widely.
+
+- **State Management**
+  - Use `useState`, `useReducer`, and custom hooks for local and domain logic.
+  - Derive state when possible instead of duplicating it (e.g., compute counts from the todos array).
+  - Keep side effects in `useEffect` / custom hooks; avoid side effects in render.
+
+- **TypeScript**
+  - Define explicit types or interfaces for core domain objects (e.g., `Todo`).
+  - Prefer `type` aliases for simple shapes and union types.
+  - Avoid using `any`; use unknown, generics, or more specific types.
+
+- **Tailwind CSS**
+  - Use Tailwind utility classes directly in JSX for layout and spacing.
+  - Group utility classes in a consistent order (layout → spacing → typography → colors → effects).
+  - Extract small presentational components (e.g., `Button`, `Card`) when class lists grow too long.
+  - Prefer semantic HTML elements (button, form, input, ul/li) styled with Tailwind rather than generic `div`s.
+
+- **Accessibility & UX**
+  - Ensure interactive elements are real buttons/links, not clickable `div`s.
+  - Provide visible focus styles; do not remove them without replacing with custom focus states.
+  - Support keyboard interactions (Enter/Space on buttons, proper labels for inputs).
+
+- **Project Organization**
+  - Colocate components, styles, and tests where it makes sense (e.g., same folder).
+  - Use clear naming: `*Page` for route-level components, `*Item` or `*Card` for list entries.
+  - Keep `App.tsx` thin; push domain logic into hooks/components.
+
+- **General Code Quality**
+  - Prefer early returns to reduce nesting.
+  - Avoid commented-out code in committed files.
+  - Keep files focused; if a file grows too large or mixed-responsibility, split it.
+
