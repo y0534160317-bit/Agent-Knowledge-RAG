@@ -65,3 +65,5 @@
 * *"What are the rules for using 'any' in this project?"* (מפעיל את ה-Router ל-JSON).
 * *"Explain the architecture of the Todo app."* (שולף מידע מ-Pinecone).
 * *"How do I make a pizza?"* (יפעיל את מנגנון ה-Retry או יחזיר הודעת חוסר מידע רלוונטי).
+
+(presentation.gif)[Demo]!
