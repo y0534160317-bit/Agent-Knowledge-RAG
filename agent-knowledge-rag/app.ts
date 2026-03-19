@@ -3,12 +3,13 @@ import { VectorStoreIndex, Settings, BaseEmbedding, MetadataMode } from "llamain
 import { PineconeVectorStore } from "@llamaindex/pinecone";
 import * as dotenv from "dotenv";
 import { QueryWorkflow } from "./QueryWorkflow";
+
 dotenv.config();
 
 const app = express();
 app.use(express.json());
 
-// --- כל הלוגיקה המנצחת שלך כאן ---
+
 
 async function getCohereEmbedding(text: string): Promise<number[]> {
     const response = await fetch("https://api.cohere.ai/v1/embed", {
@@ -101,7 +102,7 @@ app.get("/", (req, res) => {
             <div id="container">
                 <div id="chat"></div>
                 <div id="input-area">
-                    <input id="user-input" placeholder="Ask me about Claude Code..." onkeypress="if(event.key==='Enter') send()">
+                    <input id="user-input" placeholder="Ask me about the pre-RAG-Project..." onkeypress="if(event.key==='Enter') send()">
                     <button onclick="send()">Send</button>
                 </div>
             </div>
@@ -131,73 +132,14 @@ app.get("/", (req, res) => {
     `);
 });
 
-// app.post("/ask", async (req, res) => {
-//     try {
-//         const { question } = req.body;
-//         console.log(`\n--- New Question: ${question} ---`);
-
-//         Settings.embedModel = customEmbedder as any;
-//         Settings.llm = new DirectCohereLLM() as any;
-
-//         const vectorStore = new PineconeVectorStore({
-//             apiKey: process.env.PINECONE_API_KEY,
-//             indexName: "agent-knowledge-index",
-//         });
-
-//         const index = await VectorStoreIndex.fromVectorStore(vectorStore);
-
-//         const retriever = index.asRetriever({ similarityTopK: 3 });
-//         const nodes = await retriever.retrieve(question);
-
-//         console.log(`Found ${nodes.length} relevant chunks in Pinecone.`);
-//         nodes.forEach((n, i) => {
-//             console.log(`Chunk ${i + 1} preview: ${n.node.getContent(MetadataMode.NONE).substring(0, 100)}...`);
-//         });
-
-//         const queryEngine = index.asQueryEngine({
-//             retriever,
-//         });
-
-//         const response = await queryEngine.query({
-//             query: `You are a technical assistant. Use the provided context to answer the question. 
-//                     If the context doesn't contain the answer, say you don't know based on the documents, 
-//                     but try to explain what the documents DO cover.
-//                     Question: ${question}`
-//         });
-
-//         // שינוי כאן: חילוץ התשובה בצורה מפורשת יותר
-//         const finalAnswer = response.response || response.toString();
-
-//         console.log(`AI Answered: ${finalAnswer.substring(0, 100)}...`);
-
-//         // וידוא שהתשובה אינה מחרוזת ריקה או אובייקט ריק
-//         if (!finalAnswer || finalAnswer === "{}" || finalAnswer.trim() === "") {
-//             res.json({ answer: "The AI found information but had trouble formatting the response. Please try again." });
-//         } else {
-//             res.json({ answer: finalAnswer });
-//         }
-
-//     } catch (e: any) {
-//         console.error("Error in /ask:", e);
-//         res.json({ answer: "Error: " + e.message });
-//     }
-// });
-
-
-// ... שאר הקוד
+Settings.embedModel = customEmbedder as any;
+Settings.llm = new DirectCohereLLM() as any;
 
 app.post("/ask", async (req, res) => {
     try {
         const { question } = req.body;
         console.log(`\n--- New Request: ${question} ---`);
 
-        // הגדרות כרגיל (נשארות אותו דבר)
-        Settings.embedModel = customEmbedder as any;
-        Settings.llm = new DirectCohereLLM() as any;
-
-        console.log("DEBUG: Checking Pinecone config...");
-        console.log("API Key exists:", !!process.env.PINECONE_API_KEY);
-        console.log("Index Name:", "agent-knowledge-index");
 
 
 
@@ -214,7 +156,7 @@ app.post("/ask", async (req, res) => {
 
 
 
-        // --- כאן השינוי! במקום להריץ לוגיקה, מפעילים את ה-Workflow ---
+        // --- העברת השאלה לטיפול ב'Workflow' ---
         const workflow = new QueryWorkflow(retriever, queryEngine);
 
         // ה-workflow יחזיר תשובה רק כשיסיים את כל הצעדים והבדיקות

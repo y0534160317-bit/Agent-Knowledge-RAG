@@ -43,7 +43,7 @@ async function main() {
   llamaindex.Settings.embedModel = new DirectCohereEmbedding(cohereApiKey);
 
   console.log("2. Checking Pinecone...");
-  // הנה השורה שגרמה לשגיאה - וודא שהיא נראית בדיוק ככה:
+  
   const pc = new Pinecone({ apiKey: pineconeApiKey });
   
   const indexList = await pc.listIndexes();
@@ -64,7 +64,7 @@ async function main() {
   const reader = new SimpleDirectoryReader();
   const allDocs = await reader.loadData({ directoryPath: DIRECTORY_PATH });
   
-  // סינון ידני כדי לוודא שאנחנו לא מעלים 8,000 קבצים מיותרים
+  // סינון ידני כדי לוודא שאנחנו לא מעלים  קבצים מיותרים
   const documents = allDocs.filter(doc => {
     const filePath = doc.metadata.file_path || "";
     return !filePath.includes("node_modules") && 
@@ -78,7 +78,7 @@ async function main() {
   const vectorStore = new PineconeVectorStore({ indexName: PINECONE_INDEX_NAME });
   const storageContext = await llamaindex.storageContextFromDefaults({ vectorStore });
   
-// שים לב שכתוב documents ולא docs
+
 await llamaindex.VectorStoreIndex.fromDocuments(documents, { storageContext });
   console.log("✅ SUCCESS: Data is in Pinecone!");
 }

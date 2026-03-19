@@ -1,0 +1,141 @@
+[
+  {
+    "sourceFile": ".cursorrules",
+    "fullPath": "C:\\Users\\USER\\Desktop\\RAG\\pre-rag-project\\.cursorrules",
+    "extractedAt": "2026-03-19T11:21:32.181Z",
+    "data": {
+      "decisions": [],
+      "rules": [
+        "Prefer functional components with hooks over class components.",
+        "Keep components small and focused; extract reusable pieces into separate components.",
+        "Avoid deeply nested prop-drilling; use context or custom hooks when data is shared widely.",
+        "Use `useState`, `useReducer`, and custom hooks for local and domain logic.",
+        "Derive state when possible instead of duplicating it (e.g., compute counts from the todos array).",
+        "Keep side effects in `useEffect` / custom hooks; avoid side effects in render.",
+        "Define explicit types or interfaces for core domain objects (e.g., `Todo`).",
+        "Prefer `type` aliases for simple shapes and union types.",
+        "Avoid using `any`; use unknown, generics, or more specific types.",
+        "Use Tailwind utility classes directly in JSX for layout and spacing.",
+        "Group utility classes in a consistent order (layout → spacing → typography → colors → effects).",
+        "Extract small presentational components (e.g., `Button`, `Card`) when class lists grow too long.",
+        "Prefer semantic HTML elements (button, form, input, ul/li) styled with Tailwind rather than generic `div`s.",
+        "Ensure interactive elements are real buttons/links, not clickable `div`s.",
+        "Provide visible focus styles; do not remove them without replacing with custom focus states.",
+        "Support keyboard interactions (Enter/Space on buttons, proper labels for inputs).",
+        "Colocate components, styles, and tests where it makes sense (e.g., same folder).",
+        "Use clear naming: `*Page` for route-level components, `*Item` or `*Card` for list entries.",
+        "Keep `App.tsx` thin; push domain logic into hooks/components.",
+        "Prefer early returns to reduce nesting.",
+        "Avoid commented-out code in committed files.",
+        "Keep files focused; if a file grows too large or mixed-responsibility, split it."
+      ],
+      "warnings": []
+    }
+  },
+  {
+    "sourceFile": "ARCHITECTURE.md",
+    "fullPath": "C:\\Users\\USER\\Desktop\\RAG\\pre-rag-project\\docs\\ARCHITECTURE.md",
+    "extractedAt": "2026-03-19T11:21:34.149Z",
+    "data": {
+      "decisions": [],
+      "rules": [
+        "Use React hooks and optional context for state management.",
+        "Core todo state lives in either a custom hook or a context.",
+        "Always treat state as immutable and persist to localStorage after each change.",
+        "Use Tailwind utility classes directly on JSX elements for layout and spacing.",
+        "Extract small reusable components instead of creating large custom CSS files.",
+        "Keep class lists readable by grouping related utilities.",
+        "For a simple single-page Todo app, React Router is not strictly required."
+      ],
+      "warnings": [
+        "Not all files must exist on day one; this layout is the target design.",
+        "Tailwind is configured via tailwind.config and imported in src/styles/index.css.",
+        "Use Vitest or Jest for unit tests, colocated next to components."
+      ]
+    }
+  },
+  {
+    "sourceFile": "PRD.md",
+    "fullPath": "C:\\Users\\USER\\Desktop\\RAG\\pre-rag-project\\docs\\PRD.md",
+    "extractedAt": "2026-03-19T11:21:34.614Z",
+    "data": {
+      "decisions": [],
+      "rules": [],
+      "warnings": []
+    }
+  },
+  {
+    "sourceFile": "TASKS.md",
+    "fullPath": "C:\\Users\\USER\\Desktop\\RAG\\pre-rag-project\\docs\\TASKS.md",
+    "extractedAt": "2026-03-19T11:21:35.101Z",
+    "data": {
+      "decisions": [],
+      "rules": [],
+      "warnings": []
+    }
+  },
+  {
+    "sourceFile": "eslint.config.js",
+    "fullPath": "C:\\Users\\USER\\Desktop\\RAG\\pre-rag-project\\eslint.config.js",
+    "extractedAt": "2026-03-19T11:21:35.585Z",
+    "data": {
+      "decisions": [],
+      "rules": [],
+      "warnings": []
+    }
+  },
+  {
+    "sourceFile": "README.md",
+    "fullPath": "C:\\Users\\USER\\Desktop\\RAG\\pre-rag-project\\README.md",
+    "extractedAt": "2026-03-19T11:21:36.301Z",
+    "data": {
+      "decisions": [],
+      "rules": [
+        "React component structure and state management",
+        "Tailwind CSS usage and styling conventions",
+        "Accessibility, UX, and general code quality guidelines"
+      ],
+      "warnings": []
+    }
+  },
+  {
+    "sourceFile": "tsconfig.app.json",
+    "fullPath": "C:\\Users\\USER\\Desktop\\RAG\\pre-rag-project\\tsconfig.app.json",
+    "extractedAt": "2026-03-19T11:21:36.736Z",
+    "data": {
+      "decisions": [],
+      "rules": [],
+      "warnings": []
+    }
+  },
+  {
+    "sourceFile": "tsconfig.json",
+    "fullPath": "C:\\Users\\USER\\Desktop\\RAG\\pre-rag-project\\tsconfig.json",
+    "extractedAt": "2026-03-19T11:21:37.173Z",
+    "data": {
+      "decisions": [],
+      "rules": [],
+      "warnings": []
+    }
+  },
+  {
+    "sourceFile": "tsconfig.node.json",
+    "fullPath": "C:\\Users\\USER\\Desktop\\RAG\\pre-rag-project\\tsconfig.node.json",
+    "extractedAt": "2026-03-19T11:21:37.593Z",
+    "data": {
+      "decisions": [],
+      "rules": [],
+      "warnings": []
+    }
+  },
+  {
+    "sourceFile": "vite.config.ts",
+    "fullPath": "C:\\Users\\USER\\Desktop\\RAG\\pre-rag-project\\vite.config.ts",
+    "extractedAt": "2026-03-19T11:21:38.016Z",
+    "data": {
+      "decisions": [],
+      "rules": [],
+      "warnings": []
+    }
+  }
+]
