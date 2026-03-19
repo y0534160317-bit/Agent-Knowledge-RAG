@@ -66,4 +66,4 @@
 * *"Explain the architecture of the Todo app."* (שולף מידע מ-Pinecone).
 * *"How do I make a pizza?"* (יפעיל את מנגנון ה-Retry או יחזיר הודעת חוסר מידע רלוונטי).
 
-(presentation.gif)[Demo]!
+![Demo](presentation.gif)
